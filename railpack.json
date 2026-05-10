@@ -4,17 +4,21 @@
     "install": {
       "commands": [
         "python -m pip install --upgrade pip",
-        "pip install -r requirements.txt"
+        "pip install uv",
+        "uv sync"
       ]
     },
     "build": {
-      "inputs": [{ "step": "install" }],
+      "inputs": [
+        { "step": "install" }
+      ],
       "commands": [
-        "echo Build complete"
+        "uv build"
       ]
     }
   },
   "deploy": {
-    "startCommand": "python app.py"
+    "startCommand": "uv run osm-mcp-server",
+    "healthcheckPath": "/"
   }
 }
