@@ -1,5 +1,7 @@
 {
   "$schema": "https://schema.railpack.com",
+  "provider": "python",
+  "pythonVersion": "3.13",
   "steps": {
     "install": {
       "commands": [
@@ -7,18 +9,9 @@
         "pip install uv",
         "uv sync"
       ]
-    },
-    "build": {
-      "inputs": [
-        { "step": "install" }
-      ],
-      "commands": [
-        "uv build"
-      ]
     }
   },
   "deploy": {
-    "startCommand": "uv run osm-mcp-server",
-    "healthcheckPath": "/"
+    "startCommand": "uv run osm-mcp-server"
   }
 }
